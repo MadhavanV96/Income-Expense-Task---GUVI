@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="App_Container">
+        <div class="App-Part Section1">
+            <h2 id="title">Income Expense Tracker</h2>
+            <h3>Your Balance:</h3>
+            <p id="TotalBalance">0.00</p>
+            <div id="incexpBox">
+                <div class="Item box-1">
+                    <h5>Income</h5>
+                    <h4 id="income">0.00</h4>
+                </div>
+                <div class="Item box-2">
+                    <h5>Expense</h5>
+                    <h4 id="expense">0.00</h4>
+                </div>
+            </div>
+            <div class="FormContainer">
+                <form id="expense-form" onsubmit="event.preventDefault(); onFormSubmit()">
+                    <div>
+                        <label> Description : </label> <br><input type="text" id="Description" placeholder="Expense Name"
+                            required />
+                    </div>
+                    <div>
+                        <label> Amount : </label><br><input type="number" id="TransactionAmount" placeholder="Amount"
+                            required />
+                    </div>
+                    <div>
+                        <label>Category :</label><br>
+                        <select id="Category" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Date: </label><br>
+                        <input type="date" id="Date" required />
+                    </div>
+                    <button type="submit" id="submitbutton">Add Expense</button>
+                </form>
+            </div>
+        </div>
+        <div class="App-Part Section2">
+            <h1>Income Expense Data</h1>
+            <select id="filter" onchange="filterTable()">
+                <option value="All">All</option>
+                <option value="Income">Income</option>
+                <option value="Expense" >Expense</option>
+            </select>
+            <table id="ExpenseListTable">
+                <thead >
+                    <tr>
+                        <th onclick="sortTable(0)">Date</th>
+                        <th onclick="sortTable(1)">Description</th>
+                        <th onclick="sortTable(2)">Category</th>
+                        <th onclick="sortTable(3)">Amount</th>
+                        <th style="width:150px"></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
