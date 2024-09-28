@@ -27,21 +27,10 @@ function onFormSubmit() {
     else {
         allRecord[recordIndex] = formData;
     }
-
-
-
-
-
-
-
-
     displayFunction();
     calculateTotal();
     
 }
-
-
-
 
 
 
@@ -65,7 +54,7 @@ function readFormData() {
 function editData(td) {
 
     selectedObject = {};
-    selectedRow = td.parentElement.parentElement;  // Get the row (tr) containing the clicked cell
+    selectedRow = td.parentElement.parentElement;  
     selectedTable = selectedRow.parentElement;
     recordIndex = selectedRow.rowIndex - 1;
 
@@ -163,8 +152,6 @@ function resetForm() {
 
 }
 
-
-
 function calculateTotal(test) {
     incomeRecord = allRecord.filter(record => record.Category == "Income");
     incomeArray = incomeRecord.map(record => record.Amount);
@@ -185,7 +172,7 @@ function calculateTotal(test) {
 
 function DeleteRecord(td){
     selectedObject = {};
-    selectedRow = td.parentElement.parentElement;  // Get the row (tr) containing the clicked cell
+    selectedRow = td.parentElement.parentElement;  
     selectedTable = selectedRow.parentElement;
     recordIndex = selectedRow.rowIndex - 1;
     allRecord.splice(recordIndex,1);
