@@ -69,16 +69,35 @@ function editData(td) {
     document.getElementById('TransactionAmount').value = parseInt(selectedObject.Amount);
 
     filter = document.getElementById('filter').value;
-    if (filter == "All") {
-        return;
-    }
-    if (filter == "Income") {
-        filteredData = allRecord.filter(record => record.Category == "Income");
+    // if (filter == "All") {
+    //     console.log(recordIndex);
+    //     return;
+    // }
+    // else if (filter == "Income") {
+    //     filteredData = allRecord.filter(record => record.Category == "Income");
+    //     console.log(recordIndex);
+    //     recordIndex = allRecord.indexOf(filteredData[recordIndex]);
+    // }
+    // else {
+    //     filteredData = allRecord.filter(record => record.Category == "Expense");
+    //     console.log(recordIndex);
+    // }
 
-        recordIndex = allRecord.indexOf(filteredData[recordIndex]);
-    }
-    else {
-        filteredData = allRecord.filter(record => record.Category == "Expense");
+
+
+
+    if (filter == "All") {
+        
+        return;
+    } else if (filter == "Income") {
+
+        let filteredData = allRecord.filter(record => record.Category == "Income");
+        let filteredRecord = filteredData[recordIndex]; 
+        recordIndex = allRecord.indexOf(filteredRecord); 
+    } else if (filter == "Expense") {
+        let filteredData = allRecord.filter(record => record.Category == "Expense");
+        let filteredRecord = filteredData[recordIndex];
+        recordIndex = allRecord.indexOf(filteredRecord);
     }
 
 }
@@ -175,6 +194,20 @@ function DeleteRecord(td){
     selectedRow = td.parentElement.parentElement;  
     selectedTable = selectedRow.parentElement;
     recordIndex = selectedRow.rowIndex - 1;
+
+    if (filter == "All") {
+
+    } else if (filter == "Income") {
+
+        let filteredData = allRecord.filter(record => record.Category == "Income");
+        let filteredRecord = filteredData[recordIndex]; 
+        recordIndex = allRecord.indexOf(filteredRecord); 
+    } else if (filter == "Expense") {
+        let filteredData = allRecord.filter(record => record.Category == "Expense");
+        let filteredRecord = filteredData[recordIndex];
+        recordIndex = allRecord.indexOf(filteredRecord);
+    }
+
     allRecord.splice(recordIndex,1);
     displayFunction();
     calculateTotal();
